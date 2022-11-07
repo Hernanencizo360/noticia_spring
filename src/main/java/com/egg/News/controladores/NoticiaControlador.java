@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
  *
  * @author Hernan
  */
-
 @Controller
 public class NoticiaControlador {
-    
+
     @Autowired
     private NoticiaServicio noticiaServicio;
 
@@ -29,25 +28,24 @@ public class NoticiaControlador {
 
             return "index"; // indicamos el path de nuestra pagina. Vamos a templates a crearla.
         } catch (Exception e) {
-            System.err.println(e.getMessage());
-            return ""; // mas tarde crearemos un html para mostrar si surge errores
+            model.addAttribute("error", e.getMessage());
+            return "error"; // mas tarde crearemos un html para mostrar si surge errores
         }
     }
 
     @GetMapping("/detalle/{id}")
-    public String detalleNoticia(@PathVariable("id") String id, Model model) {
+    public String detalleNoticia(Model model, @PathVariable("id") String id) {
         try {
             Noticia noticia = noticiaServicio.buscarNoticia(id);
             model.addAttribute("noticia", noticia);
             return "detalle";
-            
+
         } catch (MiException e) {
             model.addAttribute("error", e.getMessage());
-            return "Error";
-        }catch(Exception e){
+            return "error";
+        } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return"Error";
+            return "error";
         }
     }
-    
 }
