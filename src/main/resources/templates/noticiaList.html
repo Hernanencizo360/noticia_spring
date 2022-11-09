@@ -49,7 +49,8 @@
                             <th scope="row" th:text="${noticia.id}"></th>
                             <td th:text="${noticia.titulo}"></td>
                             <td>
-                                <a th:href= "@{/admin/modificar/__${noticia.id}__}"><i class="fas fa-feather-alt"></i> Modificar </a>
+                                <a class="btn btn-warning" th:href= "@{/admin/modificar/__${noticia.id}__}">Modificar</a>
+                                <a class="btn btn-danger text-black" th:href= "@{/admin/eliminar/__${noticia.id}__}">Eliminar</a>
                             </td>
 
                         </tr>

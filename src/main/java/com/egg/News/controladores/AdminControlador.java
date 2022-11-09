@@ -4,12 +4,9 @@ import com.egg.News.entidades.Noticia;
 import com.egg.News.excepciones.MiException;
 import com.egg.News.servicios.NoticiaServicio;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -77,6 +74,12 @@ public class AdminControlador {
             modelo.put("error", ex.getMessage());
             return "noticiaModificar.html";
         }
-
+    }
+    
+     @GetMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable String id, ModelMap modelo) throws MiException{
+        noticiaServicio.eliminarNoticia(id);
+        
+        return "redirect:../lista";
     }
 }
