@@ -14,46 +14,58 @@
     <body>
 
         <!--BARRA DE NAVEGACION-->
-        <header th:replace="fragments/navbar :: navbar"></header>
-        
+        <header th:replace="fragments/navbar :: _navbar"></header>
 
-        <!--    <div th:each="noticia : ${noticias}">   para renderizar la lista utilizamos th:each que recorre nuestro objeto iterable.
-                    <div>
-                       <h1 th:text="${noticia.titulo}"></h1>
-                    </div>
-                </div> -->
+        <div class="container text-center">
 
-        <div class="m-5 text-center">
-            <h1><strong>Seccíon de Noticias</strong></h1>
-        </div>
-
-
-        <!-- CARD NOTICIA -->
-
-        <div class="container m-3">
-
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col" th:each="noticia : ${noticias}">
-                    <div class="card h-100 text-center">
-                        <div class="container-Head" style="height:80%">
-                            <a th:href="@{detalle/{id}(id=${noticia.id})}"> <!-- agrgegue la imagen dentro del enlace-->
-                                <img th:src="${noticia.imagen}" class="card-img-top" alt="..." style="height:100%">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${noticia.titulo}">Card title</h5>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted" th:text="${noticia.alta}">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
+            <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+                <div class="card-body">
+                    <h5 class="card-title">Exito</h5>
+                    <p class="card-text" th:text="${exito}"></p>
                 </div>
             </div>
-
+            <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError" >
+                <div class="card-body">
+                    <h5 class="card-title">Error</h5>
+                    <p class="card-text" th:text="${error}"></p>
+                </div>
+            </div>
         </div>
 
+        <main>
+
+            <div class="m-5 text-center">
+                <h1><strong>Seccíon de Noticias</strong></h1>
+            </div>
+
+
+            <!-- CARD NOTICIA -->
+
+            <div class="container m-3">
+
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col" th:each="noticia : ${noticias}">
+                        <div class="card h-100 text-center">
+                            <div class="container-Head" style="height:80%">
+                                <a class="text-decoration-none text-reset" th:href="@{detalle/{id}(id=${noticia.id})}"> <!-- agrgegue la imagen dentro del enlace-->
+                                    <img th:src="${noticia.imagen}" class="card-img-top" alt="..." style="height:100%">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${noticia.titulo}">Card title</h5>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted" th:text="${noticia.alta}">Last updated 3 mins ago</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+        
         <!-- PIE DEL ARCHIVO HTML -->
-        <footer th:replace="fragments/footer :: footer"></footer>
+        <footer th:replace="fragments/footer :: _footer"></footer>
     </body>
 
 </html>

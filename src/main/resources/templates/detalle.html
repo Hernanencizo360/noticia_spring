@@ -3,18 +3,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Descripcion Noticia</title>
+        <title>Detalle de la Noticia</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     </head>
 
     <body>
-        <header th:replace="fragments/navbar :: navbar"></header>
+        <!-- header con el navbar traida desde templates/fragments (ahorro de codigo repetido)-->
+        <header th:replace="fragments/navbar :: _navbar"></header>
 
+        
         <!-- Detalle de la noticia-->
-
         <div class="container my-5 ">
+            
             <div class="card border-light rounded-5" th:object="${noticia}">
                 <div class="card-body text-center">
                     <h2 class="card-title m-4" th:text="*{titulo}" >Card title</h2>
@@ -23,10 +25,11 @@
                 </div>
                 <img th:src="*{imagen}" class="card-img-bottom img-fluid" alt="...">
             </div>
+            
         </div>
 
-        <!-- PIE DEL ARCHIVO HTML -->
-        <footer th:replace="fragments/footer :: footer"></footer>
+        <!-- PIE DEL ARCHIVO traida tambien de templates/fragments -->
+        <footer th:replace="fragments/footer :: _footer"></footer>
     </body>
 
 </html>
