@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -101,8 +102,14 @@ public class NoticiaServicio {
 
         List<Noticia> noticias = new ArrayList();
 
-        noticias = noticiaRepositorio.findAll();
+        noticias = noticiaRepositorio.findAll(Sort.by(Sort.Direction.ASC, "alta"));
+        
+       
         return noticias;
+    }
+    
+    public Noticia getOne(String id){
+        return noticiaRepositorio.getById(id);
     }
 
 }

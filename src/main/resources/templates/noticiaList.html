@@ -44,13 +44,13 @@
                         </tr>
                     </thead>
 
-                    <tbody th:each="aux : ${noticias}"> 
+                    <tbody th:each="noticia : ${noticias}"> 
                         <tr>
-                            <th scope="row" th:text="${aux.id}"></th>
-                            <td th:text="${aux.titulo}"></td>
-                            <!--                            <td>
-                                                            <a th:href= "@{/autor/modificar/__${autor.id}__}"><i class="fas fa-feather-alt">  </i> Modificar </a>
-                                                        </td>-->
+                            <th scope="row" th:text="${noticia.id}"></th>
+                            <td th:text="${noticia.titulo}"></td>
+                            <td>
+                                <a th:href= "@{/admin/modificar/__${noticia.id}__}"><i class="fas fa-feather-alt"></i> Modificar </a>
+                            </td>
 
                         </tr>
                     </tbody> 
