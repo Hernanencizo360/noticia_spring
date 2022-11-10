@@ -1,7 +1,20 @@
 <!-- Image and text -->
-<nav class="navbar navbar-dark bg-dark p-3" th:fragment="_navbar">
+<!--<nav class="navbar navbar-dark bg-dark p-3" th:fragment="_navbar">
     <h1 class="text-light"> Egg New's</h1>
     <a class="navbar-brand" href="#">
         <img src="/img/imgEgg.png" width="80" height="80" class="d-inline-block align-center " alt="imagenEgg">
     </a>
+</nav>-->
+
+<nav class="navbar navbar-expand-lg bg-dark p-4" th:fragment="_navbar">
+    <div class="container-fluid">
+        <h1 style="font-size: 2.5em" class="navbar-brand text-white">Egg New's</h1>
+     
+        
+        <div class="d-flex" id="navbarSupportedContent">
+            <a class="text-decoration-none text-white" th:href="@{/}">INICIO</a>
+            
+            <a class="mx-3 text-decoration-none text-white" th:href="@{/admin/lista}">EDICION</a>
+        </div>
+    </div>
 </nav>

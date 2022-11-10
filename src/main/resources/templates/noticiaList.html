@@ -32,9 +32,9 @@
 
         <main>
 
-            <div class="container m-5" >
+            <div class="container table-responsive m-5" >
 
-                <table class="table table-bordered">
+                <table class="table table-bordered ">
                     <thead class="table-dark ">
                         <tr>
                             <th scope="col">Id de la Noticia</th>
@@ -49,26 +49,20 @@
                             <th scope="row" th:text="${noticia.id}"></th>
                             <td th:text="${noticia.titulo}"></td>
                             <td>
-                                <a class="btn btn-warning" th:href= "@{/admin/modificar/__${noticia.id}__}">Modificar</a>
-                                <a class="btn btn-danger text-black" th:href= "@{/admin/eliminar/__${noticia.id}__}">Eliminar</a>
+
+                                <a class="btn btn-warning btn-sm" th:href= "@{/admin/modificar/__${noticia.id}__}">Modificar</a>
+                                <a class="btn btn-danger text-black btn-sm" th:href= "@{/admin/eliminar/__${noticia.id}__}">Eliminar</a>
                             </td>
 
                         </tr>
                     </tbody> 
                 </table>
 
-
-                <section class="py-5 text-center container">
-                    <div class="row py-lg-5">
-                        <div class="col-lg-6 col-md-8 mx-auto">
-                            <a th:href="@{/}" class="btn btn-primary my-2">Volver</a>
-                            </p>
-                        </div>
-                    </div>
-                </section>
+                <section th:replace="fragments/volverInicio :: _volver"></section>
             </div>
 
         </main>
 
+        <footer th:replace="fragments/footer :: _footer"></footer>
     </body>
 </html>
